@@ -1,0 +1,167 @@
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>Login/SignUp</title>
+<link rel="stylesheet" type="text/css" href="../stylesheets/home.css" media="screen" />
+<script language='javascript' type='text/javascript'>
+  function checkpw() {
+    var pw1 = document.getElementById("#passwordstudent").value;
+    var pw2 = document.getElementById("#passwordstudent2").value;
+    var ok = true;
+      if(pw1 != pw2)
+      {
+        document.getElementById("#passwordstudent").style.borderColor = "#E34234";
+        document.getElementById("#passwordstudent2").style.borderColor = "#E34234";
+        ok = false;
+      }
+        else
+        {
+          document.alert("Passwords match");
+        }
+        return ok;
+  }
+     </script>
+  </head>
+
+<body>
+<div id="container">
+  <a class="hiddenanchor" id="toregisterAsClient"></a>
+  <a class="hiddenanchor" id="toregisterAsStudent"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+<div id="wrapper">
+      <div id="login" class="animate">
+      <form autocomplete="on" action="/userlogin" method="post">
+      <h1>LogIn</h1>
+      <p>
+        <label for="username">Your Username</label>
+         <input id="username" name="username" required="required" type="text" placeholder="superuser98"/>
+      </p>
+      <p>
+         <label for="password">Your password</label>
+         <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+       </p>
+       <!--<p>
+         <input type="checkbox" name="student" value="student"/>
+         <label>I'm a registered student </label>
+       </p>-->
+       <!-- <p class="keepLogin">
+         <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping"/>
+         <label for="loginkeeping">Keep me logged in</label>
+       </p> -->
+       <p class="submitButton">
+         <input type="reset" value="Reset"/>
+         <input type="submit" value="Login"/>
+       </p>
+       <p class="changeLink">
+         <label>Not a member yet?</label>
+         <a href="#toregisterAsStudent">Join Us</a>
+         <!--<a href= "#toregisterAsClient">Join Us as a Viewer</a>-->
+       </p>
+     </form>
+   </div>
+
+<!-- REGISTERATION FORM FOR STUDENT-->
+   <div id="signupS" class="animate" >
+     <form autocomplete="on" onsubmit="checkpw()" action="/studentsignup" method="post">
+       <h1>SignUp</h1>
+       <p>
+         <label style="font-size:16px">Please provide your Personal Info below: </label>
+       </p>
+       <p>
+      <label for="fnameS">First Name</label>
+       <input name="fnameS" required="required" type="text" placeholder="Steve"/>
+      </p>
+      <p>
+      <label for="lnameS">Last Name</label>
+       <input name="lnameS" required="required" type="text" placeholder="Jobs"/>
+      </p>
+       <p>
+         <label for="usernamestudent">Username</label>
+<!--  it's common to name the field "username and "password" so that you don't have to provide different naming
+options when writing code for Authentication credentials/ default expected value for username and password in credentials
+is "username" and "password" -->
+         <input id="usernamestudent" name="username" required="required" type="text" placeholder="superuser98"/>
+       </p>
+       <p>
+         <label for="passwordstudent">Password</label>
+         <input id="passwordstudent" name="password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+       </p>
+       <p>
+         <label for="passwordstudent2">Confirm Password</label>
+         <input id="passwordstudent2" required="required" name="password2" type="password" placeholder="eg. X8df!90EO"/>
+       </p>
+       <p>
+         <label for="birthdate">Birthdate(Optional)</label>
+         <input id ="birthdate" name="birthdate" type="Date"/>
+       </p>
+       <p>
+         <label for="gender">Gender:</label>
+        <input type="radio" id="f" name="gender" value="F">
+          <label for="f">Female</label>
+        <input type="radio" id="m" name="gender" value="M">
+          <label for ="m"> Male</label>
+       </p>
+       <p>
+        <label for="major">Major:</label>
+        <input type="radio" name="major" id="bi" required="required" value="BI">
+        <label for="bi" class="rb">BI</label>
+        <input type="radio" name="major" id="met" required="required" value="MET">
+        <label for="met" class="rb">MET</label>
+       </p>
+       <!-- <p>
+       <label for="fileupload">Upload a Profile Picture(Optional)</label>
+         <input type="file" name="displayPic" id="fileupload" >
+       </p> -->
+       <p class="submitButton">
+          <input type="reset" value="Reset"/>
+         <input type="submit" value="Get Portofolio"/>
+       </p>
+       <p class="changeLink">
+         Already a member?
+         <a href="#tologin">Sign in now</a>
+       </p>
+     </form>
+   </div>
+
+   <!-- REGISTERATION FORM FOR CLIENT  -->
+   <!--<div id="signupC" class="animate">
+     <form autocomplete="on" action="/clientsignup" method="post">
+       <h1>SignUp</h1>
+       <p>
+         <label style="font-size:16px">Please provide your Personal Info below:</label>
+       </p>
+      <p>
+      <label for="fnameC">First Name</label>
+       <input name="fnameC" type="text" placeholder="Steve"/>
+      </p>
+      <p>
+      <label for="lnameC">Last Name</label>
+      <input name="lnameC" type="text" placeholder="Jobs"/>
+      </p>
+       <p>
+         <label for="usernameclient">Username</label>
+         <input id="usernameclient" required="required" type="text" name="username" placeholder="superuser98"/>
+       </p>
+       <p>
+         <label for="passwordclient" >Password</label>
+         <input id="passwordclient" required="required" type="password" name="password" placeholder="eg. X8df!90EO"/>
+       </p>
+       <p>
+         <label for="passwordclient2">Confirm Password</label>
+         <input id="passwordclient2" required="required" type="password" name="password2" placeholder="confirm password" />
+       </p>
+       <p class="submitButton">
+         <input type="reset" value="Reset"/>
+         <input type="submit" value="Sign Up"/>
+       </p>
+       <p class="changeLink">
+         Already a member?
+         <a href="#tologin">Sign in now</a>
+       </p>
+     </form>
+   </div>-->
+
+</div> <!-- end of wrapper -->
+</div> <!-- end of container -->
+  </body>
